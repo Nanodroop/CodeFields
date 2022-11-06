@@ -3,15 +3,15 @@ import SwiftUI
 @available(iOS 13.0, *)
 @available(macOS 10.15, *)
 public struct AuthCodeCellsView: View {
-    @Binding private var code: String
-    private let showKeyboardNow: Bool
-    private let cornerRadius: CGFloat = 5
-    private let height: CGFloat = 50
-    private let length: Int
-    private let errorMessage: String
-    private let isActive: Bool
-    private let onCommit: (String) -> Void
-    private let onTapGesture: () -> Void
+    @Binding public var code: String
+    public let showKeyboardNow: Bool
+    public let cornerRadius: CGFloat = 5
+    public let height: CGFloat = 50
+    public let length: Int
+    public let errorMessage: String
+    public let isActive: Bool
+    public let onCommit: (String) -> Void
+    public let onTapGesture: () -> Void
     
     public init(
         text: Binding<String>,
@@ -60,12 +60,12 @@ public struct AuthCodeCellsView: View {
 }
 
 @available(iOS 13.0, *)
-private extension AuthCodeCellsView {
-    var hasError: Bool {
+public extension AuthCodeCellsView {
+    public var hasError: Bool {
         !errorMessage.isEmpty
     }
     
-    func rows(for text: String) -> some View {
+    public func rows(for text: String) -> some View {
         Text(text)
             .foregroundColor(Color.black)
             .font(.system(.headline))
@@ -80,7 +80,7 @@ private extension AuthCodeCellsView {
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
     
-    var backgroundColor: Color {
+    public var backgroundColor: Color {
         if isActive {
             return hasError ? .init(.red).opacity(0.2) : .init(.blue).opacity(0.2)
         } else {
@@ -88,7 +88,7 @@ private extension AuthCodeCellsView {
         }
     }
     
-    func codeLetter(with index: Int) -> String {
+    public func codeLetter(with index: Int) -> String {
         if code.count > index {
             let start = code.startIndex
             let current = code.index(start, offsetBy: index)
