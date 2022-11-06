@@ -13,7 +13,7 @@ public struct AuthCodeCellsView: View {
     private let onCommit: (String) -> Void
     private let onTapGesture: () -> Void
     
-    init(
+    public init(
         text: Binding<String>,
         showKeyboardNow: Bool,
         length: Int,
