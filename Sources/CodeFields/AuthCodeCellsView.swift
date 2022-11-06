@@ -61,11 +61,11 @@ public struct AuthCodeCellsView: View {
 
 @available(iOS 13.0, *)
 public extension AuthCodeCellsView {
-    public var hasError: Bool {
+    var hasError: Bool {
         !errorMessage.isEmpty
     }
     
-    public func rows(for text: String) -> some View {
+    func rows(for text: String) -> some View {
         Text(text)
             .foregroundColor(Color.black)
             .font(.system(.headline))
@@ -80,7 +80,7 @@ public extension AuthCodeCellsView {
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
     
-    public var backgroundColor: Color {
+    var backgroundColor: Color {
         if isActive {
             return hasError ? .init(.red).opacity(0.2) : .init(.blue).opacity(0.2)
         } else {
@@ -88,7 +88,7 @@ public extension AuthCodeCellsView {
         }
     }
     
-    public func codeLetter(with index: Int) -> String {
+    func codeLetter(with index: Int) -> String {
         if code.count > index {
             let start = code.startIndex
             let current = code.index(start, offsetBy: index)
