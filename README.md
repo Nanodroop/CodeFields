@@ -8,8 +8,6 @@ Use SPM
 File -> Add Packages -> search https://github.com/Nanodroop/CodeFields -> Add Package
 
 Then import CodeFields in your projects:
-
-Example
 _______
 ```
 AuthCodeCellsView(
