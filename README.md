@@ -13,34 +13,46 @@ Example
 _______
 ```
 AuthCodeCellsView(
-                    text: $code,
-                    showKeyboardNow: true,
-                    length: 6,
-                    errorMessage: errorMessage,
-                    isActive: isActive,
-                    onCommit: { _ in checkCode() },
-                    onTap: { showKeyboardNow = true }
+                    text: $code, // text of TextField
+                    showKeyboardNow: true, // show or hide keyboard
+                    length: 6, // number of cells
+                    errorMessage: errorMessage, // shows a text error
+                    isActive: isActive, // activity status 
+                    onCommit: { _ in checkCode() }, // your method for check code 
+                    onTap: { showKeyboardNow = true } // show or hide keyboard
                 )
 ```
 
 When
-
+```
 @State var code = ""
-
 @State var showKeyboardNow = false
-
 @State var codeLength = 6
-
 @State var errorMessage = ""
-
 @State var showingAlert = false
-
 @State var isActive = false
+```
 
 Also you can use modifiers for settings Custom UI of Texfield:
 
-<img width="609" alt="image" src="https://user-images.githubusercontent.com/83034148/201475262-5ef48844-0f31-49fe-9d66-e6a81798282a.png">
-
+```
+.alert("The right code", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+} // or NavigationLink
+.onChange(of: code) { _ in
+  withAnimation(.easeInOut(duration: 0.2)) {
+      clearCodeError()
+  }
+}
+.onAppear {
+  isActive = true
+  showKeyboardNow = true
+}
+.onDisappear {
+  isActive = false
+  showKeyboardNow = false
+}
+```
 
 #  Different condition:
 <img width="176" alt="image" src="https://user-images.githubusercontent.com/83034148/200137043-c8e2c726-5152-47bb-8c36-f97cb38524da.png">
