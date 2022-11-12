@@ -10,6 +10,11 @@ File -> Add Packages -> search https://github.com/Nanodroop/CodeFields -> Add Pa
 Then import CodeFields in your projects:
 _______
 ```
+
+import CodeFields
+
+...
+
 AuthCodeCellsView(
                     text: $code, // text of TextField
                     showKeyboardNow: true, // show or hide keyboard
@@ -19,6 +24,7 @@ AuthCodeCellsView(
                     onCommit: { _ in checkCode() }, // your method for check code 
                     onTap: { showKeyboardNow = true } // show or hide keyboard
                 )
+...
 ```
 
 When
