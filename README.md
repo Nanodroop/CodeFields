@@ -11,8 +11,18 @@ Then import CodeFields in your projects:
 
 Example
 _______
+```
+AuthCodeCellsView(
+                    text: $code,
+                    showKeyboardNow: true,
+                    length: 6,
+                    errorMessage: errorMessage,
+                    isActive: isActive,
+                    onCommit: { _ in checkCode() },
+                    onTap: { showKeyboardNow = true }
+                )
+```
 
-<img width="341" alt="image" src="https://user-images.githubusercontent.com/83034148/201475086-86c61356-6335-491e-9baa-b866af850007.png">
 When
 
 @State var code = ""
